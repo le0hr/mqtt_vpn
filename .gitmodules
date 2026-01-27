@@ -1,3 +1,0 @@
-[submodule "esp8266_gps_tracker"]
-	path = esp8266_gps_tracker
-	url = https://github.com/le0hr/esp8266_gps_tracker.git
