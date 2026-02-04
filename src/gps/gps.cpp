@@ -3,9 +3,10 @@
 #include <iostream>
 
 Gps::Gps(){
+    Serial.println("GPS: Setting up GPS");
     // init gps variables
-    RXPin = 13;
-    TXPin = 15;
+    TXPin = 13;
+    RXPin = 15;
     GPSBaud = 9600;
     busConnection = new SoftwareSerial(RXPin, TXPin);
 }
@@ -13,21 +14,22 @@ Gps::~Gps(){
     delete busConnection;
 }
 void Gps::getPosition(double* lng,double* lat){
+    Serial.println("GPS: Reading GPS data");
     busConnection->begin(GPSBaud);
     start = millis();
 
-    // wait for valid response (increased to 60 seconds for GPS lock)
+    // Wait for valid response
     do{
         while(busConnection->available()){
             char c = busConnection->read();
             GPS.encode(c);
-            Serial.print(c);
         }
-    } while(millis() - start < 60000);
+    } while(millis() - start < 1000);
     busConnection->end();
     
-    // only return coordinates if we have a valid fix
+    // Only return coordinates if we have a valid fix
     if(GPS.location.isValid()){
+        Serial.println("GPS: Valid fix acquired");
         *lng = GPS.location.lng();
         *lat = GPS.location.lat();
     } else {

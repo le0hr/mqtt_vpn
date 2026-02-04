@@ -1,10 +1,11 @@
 
 #pragma once
 
-#define MY_SSID "tishon"
-#define PASSWORD "0936444759"
-#define BROKERS_IP "192.168.0.102"
-#define BROKERS_PORT 1883
-
-#undef LED_BUILTIN
-#define LED_BUILTIN 2
+#define WIFI_SSID "Lev"
+#define WIFI_PASSWORD "12345678"
+#define MQTT_BROKERS_IP "109.227.94.29"
+#define MQTT_BROKERS_PORT 2008
+#define MQTT_USER "Esp8266"
+#define MQTT_PASWORD "12345678"
+#define DEVICE_NAME "Esp8266"
+#define FILE_PATH "./log.bin"

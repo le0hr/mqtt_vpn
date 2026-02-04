@@ -4,12 +4,20 @@ Wifi::Wifi(const char* ssid, const char* password){
     setupConnection(ssid, password);
 }
 void Wifi::setupConnection(const char* ssid, const char* password){
-    Serial.println("Setting up wifi connection");
-        WiFi.begin(ssid, password);
-        while(WiFi.status() != WL_CONNECTED){
-            Serial.print('.');
-            delay(500);
+    int attempts = 0;
+    Serial.println("Wifi: Setting up wifi connection");
+    WiFi.begin(ssid, password);
+    while(WiFi.status() != WL_CONNECTED && attempts<10 ){
+        Serial.print('.');
+        delay(1000);
+        attempts++;
 
-        }
-        Serial.println("Connected successfully \n");
+    }
+    if (WiFi.status() == WL_CONNECTED){
+        Serial.println("Wifi: Connected successfully");
+    }
+    else{
+        Serial.println("Wifi: Failed to connect");
+
+    }
 }

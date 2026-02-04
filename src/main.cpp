@@ -1,61 +1,89 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <esp_wireguard.h>
-#include <PubSubClient.h>
 #include <time.h>
-
+#include <ESP8266Ping.h>
 #include "./gps/gps.h"
 #include "./gps/wifi.h"
 #include "./gps/config.h"
+#include "./gps/mqtt.h"
+#include "./storage.h"
 
-// test wifi config
-const char* ssid = "tishon";
-const char* password = "0936444759";
+// Init global variables 
+double lng, lat;
+double polutionLevel;
+char* message = "test";
+
+time_t logTime;
 Gps* gps;
-// wireguard vpn init
-wireguard_config_t wg_config = ESP_WIREGUARD_CONFIG_DEFAULT();
-wireguard_ctx_t ctx = {0};
-esp_err_t err = ESP_FAIL;
-esp_err_t esp_wireguard_init(wireguard_config_t *config, wireguard_ctx_t *ctx);
-
-//mqtt and network init
-
+Mqtt* mqtt;
+Wifi* wifi;
+Data* storage;
 
 void setup() {
   Serial.begin(115200);
-  Wifi wifi(MY_SSID, PASSWORD);
+  
+  // Init service variables 
+  wifi = new Wifi(WIFI_SSID, WIFI_PASSWORD);
   gps = new Gps;
+  mqtt = new Mqtt(wifi, MQTT_BROKERS_IP, MQTT_BROKERS_PORT, MQTT_USER, MQTT_PASWORD);
+  storage = new Data; 
   
-  // time sync
-  // (crucial for wg)
+  // Time synchronization
   configTime(2 * 3600, 0, "pool.ntp.org");
+  do{
+    delay(500);
+    logTime = time(nullptr);
 
-  // wg config
-  wg_config.private_key ="WI3i8RI7NOM2NbI0eUHkGoFCgXloD1oXwLaCAiSZDW8=";
-  wg_config.listen_port = 2008;
-  wg_config.public_key = "EKJ1ewjni0n826dkHW+qh+tqjpDfGsdEooDR02rAylo=";
-  wg_config.endpoint = "91.244.52.63";
-  wg_config.port = 2008;
-  wg_config.address = "10.10.0.2";
-  wg_config.preshared_key = NULL;
-  wg_config.netmask = "255.255.255.0";
-  
-  // start up of wg client
-  err = esp_wireguard_init(&wg_config, &ctx);
-  Serial.print(err);
+  }while (logTime<10000000);
 
-  // connecting to host
-  err = esp_wireguard_connect(&ctx);
+  Serial.println("Time: synchronized");
+  Serial.println("Setup complite\n");
 
-  Serial.print(err);
 
 }
 
 void loop() {
-  double lng, lat;
+  // Read sensors data
 
+  
+  // ------------------------------
   gps->getPosition(&lng, &lat);
-  Serial.println(lng);
-  Serial.println(lat);
+  logTime = time(nullptr);
+  
+  // TODO: Add polution sensor reader HERE 
+  
+  // ------------------------------
+
+
+  // Sensor data managing
+  // If WiFI is connected, send saved data,
+  // otherwise add data to the file
+  storage->setData(&lat, &lng, &polutionLevel, &logTime);
+  storage->writeData();
+
+  Serial.println(wifi->wifiClient.status()==WL_CONNECTED);
+  if (WiFi.status()==WL_CONNECTED){
+    storage->startRead();
+  
+    if (!mqtt->mqttClient.connected()) mqtt->reconnect();
+  
+    storage->readData(message);
+  
+    do{
+      mqtt->sendMessage(DEVICE_NAME, message);
+    }while (wifi->wifiClient.status()==WL_CONNECTED
+     && mqtt->mqttClient.connected()
+     && storage->readData(message)>0);
+  
+     //  last chunk of data will be lost, solve later
+    storage->endRead();
+  }
+  else{
+    storage->writeData();
+    wifi->setupConnection(WIFI_SSID, WIFI_PASSWORD);
+  }
+
+
 
 }
