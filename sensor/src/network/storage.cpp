@@ -80,11 +80,10 @@ int Data::readData(char* payload){
 
     JsonDocument doc;
     doc["time"] = _storage.time;
-    doc["p"]    = serialized(String(_storage.polutionLevel, 2));
+    doc["p"]    = _storage.polutionLevel;
     
-    JsonObject gps = doc.createNestedObject("gps");
-    gps["lat"] = _storage.lat;
-    gps["lng"] = _storage.lng;
+    doc["lat"] = _storage.lat;
+    doc["lng"] = _storage.lng;
 
     char buffer[256];
 

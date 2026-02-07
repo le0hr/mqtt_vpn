@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
-#include <esp_wireguard.h>
 #include <time.h>
 #include <ESP8266Ping.h>
 #include "./gps/gps.h"
