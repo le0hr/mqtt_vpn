@@ -4,6 +4,7 @@ from config import settings
 import psycopg
 import json
 import logging 
+import datetime
 
 app = FastAPI()
 
@@ -31,21 +32,22 @@ fast_mqtt.init_app(app)
 
 @fast_mqtt.on_connect()
 def connect(client, flags, rc, properties):
-    fast_mqtt.client.subscribe("gps1") 
     logger.info("Connected: ")
 
-@fast_mqtt.subscribe("gps1")
+@fast_mqtt.subscribe("Esp8266")
 async def message_handler(client, topic, payload, qos, properties):
     logger.info(payload.decode())
     
     data = json.loads(payload.decode())
+    data['time'] = datetime.datetime.fromtimestamp(float(data['time']))
+    logger.info(data['time'])
+
     with psycopg.connect(conn_info) as conn:
         with conn.cursor() as cur:
             cur.execute(
-                "INSERT INTO data (time, lat, lng) VALUES (%s, %s, %s)",
+                "INSERT INTO data (time, lat, lng) VALUES (%s, %s, %s) RETURNING id, time",
                 (data['time'], data['lat'], data['lng'])
             )
-            logger.info('123')
             user = cur.fetchone()
             logger.info(user)
 

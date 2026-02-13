@@ -9,3 +9,4 @@
 #define MQTT_PASWORD "12345678"
 #define DEVICE_NAME "Esp8266"
 #define FILE_PATH "./log.bin"
+#define MIN_DIST 100

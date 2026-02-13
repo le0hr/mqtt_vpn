@@ -19,24 +19,18 @@ void Gps::getPosition(double* lng,double* lat){
     start = millis();
 
     // Wait for valid response
+    // Only return coordinates if we have a valid fix
     do{
         while(busConnection->available()){
             char c = busConnection->read();
             GPS.encode(c);
         }
-    } while(millis() - start < 1000);
+    } while(!GPS.location.isValid());
     busConnection->end();
     
-    // Only return coordinates if we have a valid fix
-    if(GPS.location.isValid()){
-        Serial.println("GPS: Valid fix acquired");
-        *lng = GPS.location.lng();
-        *lat = GPS.location.lat();
-    } else {
-        *lng = 0;
-        *lat = 0;
-        Serial.println("GPS: No valid fix acquired");
-    }
+    *lng = GPS.location.lng();
+    *lat = GPS.location.lat();
+    
 
 
 }
