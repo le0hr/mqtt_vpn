@@ -11,6 +11,7 @@ Mqtt::Mqtt(Wifi* wifi, const char* brokers_IP, const int brokers_port,const char
     this->_pass = pass;
     reconnect();
 
+
 }
 
 void Mqtt::reconnect(){
@@ -26,6 +27,7 @@ void Mqtt::reconnect(){
                 attempts++;
             }
         }
+    }
 
 }
 
