@@ -6,45 +6,82 @@
     <title>Air Quality Monitor</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="leaflet/dist/leaflet.css">
+    <script src="leaflet/dist/leaflet.js"></script>
 </head>
 <body>
     <header>
         <div class="logo">
-            <div class="logoimg"><i class="fas fa-wind"></i></div>
+            <div class="logo-img"><i class="fas fa-wind"></i></div>
             <div class="name">
                 <h2>Air Quality Monitor</h2>
-                <p class="gray">New York City</p>
+                <!-- <p class="gray">New York City</p> -->
             </div>
         </div>
         
         <div class="poltype">
             <div class="dropdown-text gray">Pollution Type:</div>
             <div class="dropdown">
-                <div class="dropdown-selected">PM2.5</div>
+                <div class="dropdown-selected">CO</div>
                 <div class="dropdown-check-mark"></div>
                 <div class="dropdown-options">
-                    <div class="option selected" data-value="pm2.5"><p>PM2.5</p><div class="check"></div></div>
-                    <div class="option" data-value="no2"><p>NO<sub>2</sub></p><div class="check"></div></div>
-                    <div class="option" data-value="co"><p>CO</p><div class="check"></div></div>
+                    <div class="option selected" data-value="co"><p>CO</p><div class="check"></div></div>
+                    <div class="option" data-value="alcohol"><p>Alcohol</p><div class="check"></div></div>
+                    <div class="option" data-value="co2"><p>CO2</p><div class="check"></div></div>
+                    <div class="option" data-value="toluene"><p>Toluene</p><div class="check"></div></div>
+                    <div class="option" data-value="nh3"><p>NH<sub>3</sub></p><div class="check"></div></div>
+                    <div class="option" data-value="acetone"><p>Acetone</p><div class="check"></div></div>
                 </div>
 
-                <input type="hidden" name="dropdown-selected-pollution-value", value="pm2.5">
+                <input type="hidden" name="dropdown-selected-pollution-value", value="co">
             </div>
         </div>
     </header>
     <main>
-        <div class="map"></div>
-        <div class="airinfo">
-            <div class="type"></div>
-            <div class="statistics"></div>
-            <div class="pm25lev"></div>
+        <div class="map" id="map"></div>
+        <div class="air-info">
+            <div class="type">
+                <div class="type-img"><i class="fas fa-droplet"></i></div>
+                <div class="type-text">
+                    <p class="gray">Current Type</p>
+                    <h3>CO</h3>
+                </div>
+            </div>
+            <div class="statistics">
+                <h3>Statistics</h3>
+                <div class="average">
+                    <p class="gray">Average</p>
+                    <h1></h1>
+                </div>
+                <div class="minmax">
+                    <div class="max">
+                        <p class="gray">Max</p>
+                        <h3></h3>
+                    </div>
+                    <div class="min">
+                        <p class="gray">Min</p>
+                        <h3></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="levels">
+                <h3>CO Levels</h3>
+                <ul>
+                    <li><div class="circle" style="background-color: #8B0000;"></div>Very High</li>
+                    <li><div class="circle" style="background-color: #DC143C;"></div>High</li>
+                    <li><div class="circle" style="background-color: #FF6347;"></div>Moderate-High</li>
+                    <li><div class="circle" style="background-color: #FFA500;"></div>Moderate</li>
+                    <li><div class="circle" style="background-color: #FFD700;"></div>Low</li>
+                    <li><div class="circle" style="background-color: #00FF00;"></div> Very Low</li>
+                </ul>
+            </div>
         </div>
     </main>
     <footer>
-        <div class="version gray">Last updated: 08.02.2026, 12:42:08</div>
+        <!-- <div class="version gray">Last updated: date, time</div> -->
         <div class="stations gray">
-            <p>Monitoring Stations: <b style="color: #0A0A0A;">8</b></p>
-            <p>Coverage Area: <b style="color: #0A0A0A;">468 km<sup>2</sup></b></p></div>
+            <p>Monitoring Stations: <b style="color: #0A0A0A;">number</b></p>
+            <!-- <p>Coverage Area: <b style="color: #0A0A0A;">area km<sup>2</sup></b></p></div> -->
     </footer>
 
     <script src="scripts/script.js"></script>

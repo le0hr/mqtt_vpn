@@ -20,6 +20,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     color: #0A0A0A;
+    position: relative;
 }
 
 .gray {
@@ -46,7 +47,7 @@ header {
     gap: 14px;
 }
 
-.logoimg {
+.logo-img {
     width: 50px;
     height: 50px;
     background-color: #155DFC;
@@ -144,23 +145,114 @@ header {
     display: block;
 }
 
+main {
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    /* height: calc(100vh - 140px); */
+    justify-content: space-between;
+}
+
+.map {
+    width: 70%;
+}
+
+.air-info {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.type {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0 2px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    /* height: 15%; */
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+}
+
+.type-img {
+    width: 45px;
+    height: 45px;
+    background-color: #DBEAFE;
+    border-radius: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: #155DFC;
+}
+
+.type-text {
+    font-size: 15px;
+}
+
+.statistics {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0 2px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 30px;
+}
+
+.minmax {
+    display: flex;
+    gap: 40px;
+}
+
+.levels {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0 2px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    box-shadow: 0px 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.levels ul {
+    list-style-type: none;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.levels ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 footer {
     height: 60px;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 20px;
     box-shadow: 0px 0 2px rgba(0, 0, 0, 0.1);
+    /* position: absolute; */
+    /* bottom: -60px; */
+    /* bottom: 0; */
+    width: 100%;
 }
-
-main {
-    flex: 1;
-    padding: 20px;
-}
-
-
 
 .stations {
     display: flex;
