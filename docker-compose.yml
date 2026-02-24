@@ -13,8 +13,10 @@ services:
     container_name: frontend
     ports:
       - "80:80"
+      - "1883:1883"
     volumes:
       - ./frontend:/usr/share/nginx/html
+      - ./frontend/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - backend
 

@@ -25,6 +25,7 @@ void Gps::getPosition(double* lng,double* lat){
             char c = busConnection->read();
             GPS.encode(c);
         }
+        Serial.print('.');
     } while(!GPS.location.isValid());
     busConnection->end();
     

@@ -31,17 +31,17 @@ Data::Data(){
 }
 
 // struct setter 
-void Data::setData(double* lat, double* lng, float* CO2, float* toluene, float* CO, float* alcohol, float* NH3, float* acetone, time_t* time ){
+void Data::setData(double* lat, double* lng, float* co, float* alcohol , float* co2, float* toluene, float* nh3, float* acetone, time_t* logTime){
     // Update data
     _measurements.lat = *lat;
     _measurements.lng = *lng;
-    _measurements.CO = *CO;
+    _measurements.CO = *co;
     _measurements.alcohol = *alcohol;
-    _measurements.CO2 = *CO2;
+    _measurements.CO2 = *co2;
     _measurements.toluene = *toluene;
-    _measurements.NH3 = *NH3;
+    _measurements.NH3 = *nh3;
     _measurements.acetone = *acetone;
-    _measurements.time = *time;
+    _measurements.time = *logTime;
     Serial.println("Storage: Data have been set ");
 
 }

@@ -11,18 +11,18 @@ struct Storage
     double lat;
     double lng;
     // Air pollution measurements
-    float LPG;
-    float CH4;
     float CO;
     float alcohol;
-    float benzene;
-    float hexane;
+    float CO2;
+    float toluene;
+    float NH3;
+    float acetone;
 };
 
 class Data{
 public:
     Data();
-    void setData(double* lat, double* lng, float* LPG, float* CH4, float* CO, float* alcohol, float* benzene, float* hexane, time_t* time );
+    void setData(double* lat, double* lng, float* co, float* alcohol , float* co2, float* toluene, float* nh3, float* acetone, time_t* logTime);
     void writeData();
     void startRead();
     int readData(char* payload);

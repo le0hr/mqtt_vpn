@@ -9,8 +9,8 @@
 #include "./airSensor.h"
 
 // Init global variables 
-double lng, lat, prvLng, prvLat;
-double polutionLevel;
+double lng, lat, prvLat, prvLng;
+float co,  alcohol ,  co2,  toluene,  nh3,  acetone;
 char* message = "test";
 
 time_t logTime;
@@ -24,21 +24,13 @@ void setup() {
   Serial.begin(115200);
   
   // Init service variables 
-  wifi = new Wifi(WIFI_SSID, WIFI_PASSWORD);
+  wifi = new Wifi;
   gps = new Gps;
   mqtt = new Mqtt(wifi, MQTT_BROKERS_IP, MQTT_BROKERS_PORT, MQTT_USER, MQTT_PASWORD);
   storage = new Data;
   airSensor = new AirSensor; 
   
-  // Time synchronization
-  configTime(2 * 3600, 0, "pool.ntp.org");
-  do{
-    delay(500);
-    logTime = time(nullptr);
-
-  }while (logTime<10000000);
-
-  Serial.println("Time: synchronized");
+  
   Serial.println("Setup complite\n");
 
 
@@ -51,7 +43,7 @@ void loop() {
   // ------------------------------
   gps->getPosition(&lng, &lat);
   logTime = time(nullptr);  
-  airSensor->readData()
+  airSensor->readData(&co, &alcohol , &co2, &toluene, &nh3, &acetone);
   // ------------------------------
 
   // Sensor data managing 
@@ -59,7 +51,7 @@ void loop() {
     
     // If WiFI is connected, send saved data,
     // otherwise add data to the file
-    storage->setData(&lat, &lng, &polutionLevel, &logTime);
+    storage->setData(&lat, &lng, &co, &alcohol , &co2, &toluene, &nh3, &acetone, &logTime);
     storage->writeData();
   
     if (WiFi.status()==WL_CONNECTED){
@@ -77,6 +69,8 @@ void loop() {
     
        //  last chunk of data will be lost, solve later
       storage->endRead();
+      prvLat = lat;
+      prvLng = lng;
     }
     else{
       storage->writeData();

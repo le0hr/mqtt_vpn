@@ -18,12 +18,9 @@ AirSensor::AirSensor(){
     MQ3->setR0(calcR0/10);
     Serial.println("  done!.");
     
-    if(isinf(calcR0)) {Serial.println("AirSensor: Connection issue, R0 is infinite (Open circuit detected) please check your wiring and supply"); while(1);}
-    if(calcR0 == 0){Serial.println("AirSensor: Connection issue found, R0 is zero (Analog pin shorts to ground) please check your wiring and supply"); while(1);}
-    MQ3->serialDebug(true);
 }
 
-void AirSensor::readData(float* co, float* alcohol , float* co2, float* toluene, float* nh4, float* acetone){
+void AirSensor::readData(float* co, float* alcohol , float* co2, float* toluene, float* nh3, float* acetone){
     MQ3->update();
     
     MQ3->setA(605.18); MQ3->setB(-3.937);   // CO detection
@@ -33,17 +30,17 @@ void AirSensor::readData(float* co, float* alcohol , float* co2, float* toluene,
     *alcohol = MQ3->readSensor(false, 0);
     
     MQ3->setA(110.47); MQ3->setB(-2.862);   // CO2 detection
-    *CO2 = MQ3->readSensor(false, 0);
+    *co2 = MQ3->readSensor(false, 0);
     
     MQ3->setA(44.947); MQ3->setB(-3.445);   // Toluene detection
     *toluene = MQ3->readSensor(false, 0);
     
-    MQ3->setA(102.2); MQ3->setB(-2.473);   // NH4 detection
-    *nh4 = MQ3->readSensor(false, 0);
+    MQ3->setA(102.2); MQ3->setB(-2.473);   // NH3 detection
+    *nh3 = MQ3->readSensor(false, 0);
     
     MQ3->setA(34.668); MQ3->setB(-3.369);   // Acetone detection
     *acetone = MQ3->readSensor(false, 0);
-    Serial.println("AirSensor: data was read")
+    Serial.println("AirSensor: data was read");
 
 
 

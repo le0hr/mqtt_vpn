@@ -9,7 +9,6 @@ Mqtt::Mqtt(Wifi* wifi, const char* brokers_IP, const int brokers_port,const char
     mqttClient.setServer(brokers_IP, brokers_port);
     this->_user = user;
     this->_pass = pass;
-    reconnect();
 
 
 }
@@ -18,18 +17,17 @@ void Mqtt::reconnect(){
     //  Timeout counter
     int attempts = 0;
     while (!mqttClient.connected() && attempts < 10){
-            Serial.println("MQTT: Reconnecting to mqtt server");
-            if (mqttClient.connect("testID",_user, _pass)){
-                mqttClient.publish("gps1", "test message`");
-            }  
-            else{
-                delay(1000);
-                attempts++;
-            }
+        Serial.println("MQTT: Reconnecting to mqtt server");
+        if (mqttClient.connect("testID",_user, _pass)){
+            mqttClient.publish("gps1", "test message`");
+        }  
+        else{
+            delay(1000);
+            attempts++;
         }
     }
-
 }
+
 
 void Mqtt::sendMessage(const char* topic, const char* message){
     if (mqttClient.publish(topic,message)){
