@@ -42,9 +42,9 @@ We need your help to cover the whole city! You don't need to be a programmer to 
 ## ⚙️ How to flesh controler
 
 *Instructions on how to run the backend and frontend locally will be added here soon.*
-1.**Preparation** Install the PlatformIO extention for your VSCODE and open sensor folder using PlatformIO
-2.**Configuring** Update sensor/include/config.h.
-3.**Flashing** Attach controler via USB and flash it.
+1. **Preparation** Install the PlatformIO extention for your VSCODE and open sensor folder using PlatformIO
+2. **Configuring** Update sensor/include/config.h.
+3. **Flashing** Attach controler via USB and flash it.
 ---
 
 ## 📢 Project status
