@@ -1,3 +1,3 @@
-./backend/src/__pycache__
-./backend/.env
-./broker/passwd.txt
+backend/src/__pycache__
+backend/.env
+broker/passwd.txt
