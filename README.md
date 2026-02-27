@@ -8,8 +8,7 @@ By combining low-cost DIY sensors with the everyday routes of local cyclists, we
 
 Traditional air quality monitoring relies on expensive, stationary stations. Our approach is different: **mobility and community.**
 
-We designed a dirt-cheap, portable sensor that anyone can attach to their bicycle. As cyclists ride through different neighborhoods, parks, and traffic-heavy streets, the device continuously collects air quality and location data. This paints a highly accurate, constantly updating picture of the city's ecological state.
-
+We designed a dirt-cheap, portable sensor that anyone can attach to their bicycle. As cyclists ride through different neighborhoods, parks, and traffic-heavy streets, the device continuously collects air quality and location data. This offers an approximate and regularly refreshed snapshot of the city's ecological state.
 ## 🛠 The Hardware: Accessible & Affordable
 
 The barrier to entry is extremely low. The entire sensor node costs around **$5 - $7** to assemble and requires no advanced engineering skills.
@@ -18,7 +17,7 @@ The barrier to entry is extremely low. The entire sensor node costs around **$5 
 | :--- | :--- |
 | **ESP8266** | The brain of the device. Reads data and transmits it via Wi-Fi/Hotspot. |
 | **MQ-135** | A cheap but effective gas sensor that detects CO2, Ammonia, Benzene, and smoke. |
-| **K2-GPS** | Tracks the exact latitude and longitude of the air sample. |
+| **GP-02-Kit GPS** | Tracks the exact latitude and longitude of the air sample. |
 | **Power Bank** | Any standard USB power bank keeps the device running during a ride. |
 
 ## 🏗 Architecture & Data Flow
@@ -34,15 +33,25 @@ The system is designed to be lightweight and fast, ensuring that a cyclist's exa
 
 We need your help to cover the whole city! You don't need to be a programmer to contribute.
 
-* **For Cyclists:** Build a sensor (or request one from us), attach it to your handlebars, turn on your phone's Wi-Fi hotspot, and just ride your usual routes!
+* **For Cyclists:** Build a sensor (or request one from us) and follow instructions bellow. Then attach it to your handlebars, and just ride your usual routes!
 * **For Developers:** * Clone this repository: `git clone https://github.com/le0hr/ecomonitor.git`
   * Help us improve the backend MQTT handler or optimize the database queries.
   * Enhance the frontend map UI (Leaflet/Mapbox) to show historical heatmaps.
 * **For Citizens:** Share the map on social media. Public awareness is the first step toward cleaner air.
 
-## ⚙️ Local Development Setup
+## ⚙️ How to flesh controler
 
 *Instructions on how to run the backend and frontend locally will be added here soon.*
-
+1.**Preparation** Install the PlatformIO extention for your VSCODE and open sensor folder using PlatformIO
+2.**Configuring** Update sensor/include/config.h.
+3.**Flashing** Attach controler via USB and flash it.
 ---
+
+## 📢 Project status
+
+* Actively under development.  
+* Want to join the development team?  
+* Or would you like to request a sensor?  
+* Contact us for any reason via email: **lev.hrabovij@gmail.com**
+
 *Made with love for a cleaner Cherkasy.*
