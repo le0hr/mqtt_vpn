@@ -12,7 +12,7 @@ services:
     build: ./frontend
     container_name: frontend
     ports:
-      - "80:80"
+      - "8082:80"
       - "1883:1883"
     volumes:
       - ./frontend:/usr/share/nginx/html
