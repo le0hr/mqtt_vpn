@@ -106,7 +106,7 @@ var data = [
 // let data = await fetchData();
 var circleList = {};
 
-var map = L.map('map').setView([49.436919, 32.058511], 12);
+var map = L.map('map').setView([49.436919, 32.058511], 13);
 // if(data.length === 0){
     // map = L.map('map').setView([49.436919, 32.058511], 12);
 // }else{
@@ -114,7 +114,8 @@ var map = L.map('map').setView([49.436919, 32.058511], 12);
 // }
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    minZoom: 13,
+    maxZoom: 13,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
@@ -130,7 +131,7 @@ for(let i = 0; i < data.length; i++) {
         color: color,
         fillColor: color,
         fillOpacity: 0.7,
-        radius: 200
+        radius: 150
     }).addTo(map);
     circle.bindPopup(`CO: ${data[i].co} AQI<br>Alcohol: ${data[i].alcohol} AQI<br>CO2: ${data[i].co2} AQI<br>Toluene: ${data[i].toluene} AQI<br>NH3: ${data[i].nh3} AQI<br>Acetone: ${data[i].acetone} AQI`);
 
