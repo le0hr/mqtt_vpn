@@ -1,0 +1,295 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'SNPro-Regular';
+    src: url('../fonts/SN_Pro/static/SNPro-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'SNPro-Medium';
+    src: url('../fonts/SN_Pro/static/SNPro-Medium.ttf') format('truetype');
+}
+
+body {
+    font-family: 'SNPro-Regular', sans-serif;
+    background-color: #ECF1F6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #0A0A0A;
+    position: relative;
+}
+
+.gray {
+    color: #5F6977;
+}
+
+sup, sub {
+    line-height: 0;
+}
+
+header {
+    height: 80px;
+    background-color: white;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    background-color: #155DFC;
+    border-radius: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: white;
+    transform: scaleY(-1);
+}
+
+.poltype {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdown {
+    position: relative;
+    /* width: 120px; */
+    user-select: none;
+}
+
+.dropdown-selected {
+    width: 140px;
+    height: 35px;
+    padding: 0 12px;
+    line-height: 35px;
+    /* display: flex;
+    align-items: center; */
+    background-color: #F3F3F5;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: "SNPro-Medium", sans-serif;
+}
+
+.dropdown-options {
+    position: absolute;
+    width: 100%;
+    top: 120%;
+    left: 0;
+    background-color: white;
+    /* border: solid 1px #F3F3F5; */
+    display: none;
+    border-radius: 8px;
+    flex-direction: column;
+    z-index: 100;
+    padding: 5px;
+    gap: 3px;
+    box-shadow: 0px 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown.active .dropdown-options {
+    display: flex;
+}
+
+.option {
+    position: relative;
+    padding: 0 7px;
+    cursor: pointer;
+    border-radius: 8px;
+    height: 35px;
+    line-height: 35px;
+}
+
+.option:hover {
+    background-color: #F3F3F5;
+}
+
+.dropdown-check-mark {
+    position: absolute;
+    right: 15px;
+    top: 35%;
+    width: 7px;
+    height: 7px;
+    border-left: 2px solid #B2B2BB;
+    border-bottom: 2px solid #B2B2BB;
+    transform: rotate(-45deg);
+}
+
+.check {
+    position: absolute;
+    right: 10px;
+    top: 33%;
+    width: 10px;
+    height: 7px;
+    border-left: 2px solid #717182;
+    border-bottom: 2px solid #717182;
+    transform: rotate(-45deg);
+    display: none;
+}
+
+.option.selected .check {
+    display: block;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 140px);
+    justify-content: space-between;
+}
+
+.map {
+    width: 70%;
+}
+
+.air-info {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.type {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0 2px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    /* height: 15%; */
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+}
+
+.type-img {
+    width: 45px;
+    height: 45px;
+    background-color: #DBEAFE;
+    border-radius: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: #155DFC;
+}
+
+.type-text {
+    font-size: 15px;
+}
+
+.statistics {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0 2px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+}
+
+.minmax {
+    display: flex;
+    gap: 40px;
+}
+
+.levels {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0 2px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    box-shadow: 0px 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.levels ul {
+    list-style-type: none;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.levels ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer {
+    height: 60px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0px 0 2px rgba(0, 0, 0, 0.1);
+    /* position: absolute; */
+    /* bottom: -60px; */
+    /* bottom: 0; */
+    width: 100%;
+}
+
+.stations {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+@media (max-height: 720px) {
+    /* main {
+        height: auto;
+    } */
+    .statistics h3, .type h3, .levels h3 {
+        font-size: 16px;
+    }
+    .statistics h1 {
+        font-size: 28px;
+    }
+    .statistics p, .type p, .levels li {
+        font-size: 14px;
+    }
+}
+@media (max-height: 690px) {
+    .air-info {
+        gap: 10px;
+    }
+    .air-info > div {
+        padding: 15px;
+    }
+    .levels {
+        gap: 15px;
+    }
+    .statistics {
+        gap: 5px;
+    }
+}
+@media (max-height: 630px){
+    main {
+        height: auto;
+    }
+}

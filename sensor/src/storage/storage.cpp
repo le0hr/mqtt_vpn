@@ -1,4 +1,4 @@
-#include "./storage.h"
+#include "./storage/storage.h"
 
 // init struct
 Data::Data(){
@@ -19,19 +19,30 @@ Data::Data(){
     LittleFS.info(fsInfo);
     Serial.printf("Storage: FS Total: %d, Used: %d\n", fsInfo.totalBytes, fsInfo.usedBytes);
     
-    _storage.lat = 0;
-    _storage.lng = 0;
-    _storage.polutionLevel = 0;
-    _storage.time = 0;
+    _measurements.lat = 0;
+    _measurements.lng = 0;
+    _measurements.CO = 0;
+    _measurements.alcohol = 0;
+    _measurements.CO2 = 0;
+    _measurements.toluene = 0;
+    _measurements.NH3 = 0;
+    _measurements.acetone = 0;
+    _measurements.time = 0;
 }
 
 // struct setter 
-void Data::setData(double* lat, double* lng, double* polutionLevel, time_t* time){
-    _storage.lat = *lat;
-    _storage.lng = *lng;
-    _storage.polutionLevel = *polutionLevel;
-    _storage.time = *time;
-     Serial.println("Storage: Setted up");
+void Data::setData(double* lat, double* lng, float* co, float* alcohol , float* co2, float* toluene, float* nh3, float* acetone, time_t* logTime){
+    // Update data
+    _measurements.lat = *lat;
+    _measurements.lng = *lng;
+    _measurements.CO = *co;
+    _measurements.alcohol = *alcohol;
+    _measurements.CO2 = *co2;
+    _measurements.toluene = *toluene;
+    _measurements.NH3 = *nh3;
+    _measurements.acetone = *acetone;
+    _measurements.time = *logTime;
+    Serial.println("Storage: Data have been set ");
 
 }
 
@@ -44,13 +55,13 @@ void Data::writeData(){
         return;
     }
     
-    size_t bytesWritten = _f.write((const uint8_t*)&_storage, sizeof(_storage));
+    size_t bytesWritten = _f.write((const uint8_t*)&_measurements, sizeof(_measurements));
     
     // Logging 
-    if (bytesWritten == sizeof(_storage)) {
+    if (bytesWritten == sizeof(_measurements)) {
         Serial.println("Storage: Data were wrote successfully.");
     } else {
-        Serial.printf("Storage: Failed! Wrote %d of %d\n", bytesWritten, sizeof(_storage));
+        Serial.printf("Storage: Failed! Wrote %d of %d\n", bytesWritten, sizeof(_measurements));
     }
     _f.close(); 
 }
@@ -71,7 +82,7 @@ int Data::readData(char* payload){
     // if file exists or not empty, read from file
     if (!_f.size()){
         _f = LittleFS.open("/log.bin", "r");
-        _f.read((uint8_t*)&_storage, sizeof(_storage));
+        _f.read((uint8_t*)&_measurements, sizeof(_measurements));
     }
     
     if (!_f) {
@@ -79,12 +90,15 @@ int Data::readData(char* payload){
     }
 
     JsonDocument doc;
-    doc["time"] = _storage.time;
-    doc["p"]    = serialized(String(_storage.polutionLevel, 2));
-    
-    JsonObject gps = doc.createNestedObject("gps");
-    gps["lat"] = _storage.lat;
-    gps["lng"] = _storage.lng;
+    doc["lat"] = _measurements.lat;
+    doc["lng"] = _measurements.lng;
+    doc["time"] = _measurements.time;
+    doc["co"]    = _measurements.CO;
+    doc["alcohol"]    = _measurements.alcohol;
+    doc["co2"]    = _measurements.CO2;
+    doc["toluene"]    = _measurements.toluene;
+    doc["nh3"]    = _measurements.NH3;
+    doc["acetone"]    = _measurements.acetone;
 
     char buffer[256];
 
@@ -99,8 +113,8 @@ int Data::readData(char* payload){
 // copy unread data to new file
 void Data::endRead(){
     File f_temp = LittleFS.open("/log1.bin", "a");
-    while (_f.read((uint8_t*)&_storage, sizeof(_storage)) == sizeof(_storage)){
-        f_temp.write((const uint8_t*)&_storage, sizeof(_storage));
+    while (_f.read((uint8_t*)&_measurements, sizeof(_measurements)) == sizeof(_measurements)){
+        f_temp.write((const uint8_t*)&_measurements, sizeof(_measurements));
     }
     _f.close();
     LittleFS.remove("./log.bin");

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Monitor</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="leaflet/dist/leaflet.css">
+    <script src="leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-img"><i class="fas fa-wind"></i></div>
+            <div class="name">
+                <h2>Air Quality Monitor</h2>
+                <!-- <p class="gray">New York City</p> -->
+            </div>
+        </div>
+        
+        <div class="poltype">
+            <div class="dropdown-text gray">Pollution Type:</div>
+            <div class="dropdown">
+                <div class="dropdown-selected">CO</div>
+                <div class="dropdown-check-mark"></div>
+                <div class="dropdown-options">
+                    <div class="option selected" data-value="co"><p>CO</p><div class="check"></div></div>
+                    <div class="option" data-value="alcohol"><p>Alcohol</p><div class="check"></div></div>
+                    <div class="option" data-value="co2"><p>CO2</p><div class="check"></div></div>
+                    <div class="option" data-value="toluene"><p>Toluene</p><div class="check"></div></div>
+                    <div class="option" data-value="nh3"><p>NH<sub>3</sub></p><div class="check"></div></div>
+                    <div class="option" data-value="acetone"><p>Acetone</p><div class="check"></div></div>
+                </div>
+
+                <input type="hidden" name="dropdown-selected-pollution-value", value="co">
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="map" id="map"></div>
+        <div class="air-info">
+            <div class="type">
+                <div class="type-img"><i class="fas fa-droplet"></i></div>
+                <div class="type-text">
+                    <p class="gray">Current Type</p>
+                    <h3>CO</h3>
+                </div>
+            </div>
+            <div class="statistics">
+                <h3>Statistics</h3>
+                <div class="average">
+                    <p class="gray">Average</p>
+                    <h1></h1>
+                </div>
+                <div class="minmax">
+                    <div class="max">
+                        <p class="gray">Max</p>
+                        <h3></h3>
+                    </div>
+                    <div class="min">
+                        <p class="gray">Min</p>
+                        <h3></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="levels">
+                <h3>CO Levels</h3>
+                <ul>
+                    <li><div class="circle" style="background-color: #8B0000;"></div>Very High</li>
+                    <li><div class="circle" style="background-color: #DC143C;"></div>High</li>
+                    <li><div class="circle" style="background-color: #FF6347;"></div>Moderate-High</li>
+                    <li><div class="circle" style="background-color: #FFA500;"></div>Moderate</li>
+                    <li><div class="circle" style="background-color: #FFD700;"></div>Low</li>
+                    <li><div class="circle" style="background-color: #00FF00;"></div> Very Low</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- <div class="version gray">Last updated: date, time</div> -->
+        <div class="stations gray">
+            <p>Monitoring Stations: <b style="color: #0A0A0A;">number</b></p>
+            <!-- <p>Coverage Area: <b style="color: #0A0A0A;">area km<sup>2</sup></b></p></div> -->
+    </footer>
+
+    <script type="module" src="scripts/script.js"></script>
+</body>
+</html>

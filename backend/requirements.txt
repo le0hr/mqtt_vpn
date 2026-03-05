@@ -1,0 +1,16 @@
+annotated-doc==0.0.4
+annotated-types==0.7.0
+anyio==4.12.1
+fastapi==0.128.2
+fastapi-mqtt==2.2.0
+gmqtt==0.7.0
+idna==3.11
+pydantic==2.12.5
+pydantic_core==2.41.5
+pydantic_settings==2.4.0
+psycopg2-binary==2.9.9
+setuptools==80.9.0
+starlette==0.50.0
+typing-inspection==0.4.2
+typing_extensions==4.15.0
+uvicorn[standard]==0.30.6
