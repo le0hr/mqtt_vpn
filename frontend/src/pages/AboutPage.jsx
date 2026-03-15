@@ -4,11 +4,12 @@ import { useTranslation } from 'react-i18next';
 
 export function AboutPage() {
   const { t } = useTranslation();
+  // add statistic fetching
   const stats = [
-    { icon: Users, label: t('aboutPage.stats.activeMonitors'), value: '150+' },
-    { icon: Target, label: t('aboutPage.stats.dataPoints'), value: '50K+' },
-    { icon: Award, label: t('aboutPage.stats.yearsOperating'), value: '8' },
-    { icon: TrendingUp, label: t('aboutPage.stats.accuracyRate'), value: '99.2%' },
+    { icon: Users, label: t('aboutPage.stats.activeMonitors'), value: 'placeholder' },
+    { icon: Target, label: t('aboutPage.stats.dataPoints'), value: 'placeholder' },
+    { icon: Award, label: t('aboutPage.stats.yearsOperating'), value: 'placeholder' },
+    { icon: TrendingUp, label: t('aboutPage.stats.accuracyRate'), value: 'placeholder'},
   ];
 
   return (

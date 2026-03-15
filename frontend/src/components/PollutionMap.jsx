@@ -63,7 +63,7 @@ export function PollutionMap({ points = [], selected = 'co2', center = [49.444, 
   // fix gas selection menu
   const maxValue = points.length > 0 ? Math.max(...points.map(d => d.value)) : 1;
   return (
-    <div className="size-full relative overflow-hidden">
+    <div className="h-full w-full relative overflow-hidden">
       <MapContainer 
         center={center} 
         zoom={zoom} 
@@ -88,15 +88,15 @@ export function PollutionMap({ points = [], selected = 'co2', center = [49.444, 
               {/*Tooltip window */}
               <Tooltip direction="top" offset={[0, -10]} opacity={1} className="custom-leaflet-tooltip">
                 <div className="bg-white px-3 py-2 rounded-lg shadow-xl border border-gray-100 min-w-[120px]">
-                  {/* Заголовок локації */}
+                  {/* Location header */}
                   <div className="text-[13px] font-bold text-gray-900 border-b border-gray-50 pb-1 mb-1 truncate">
                     {point.location}
                   </div>
                   
-                  {/* Значення з індикатором */}
+                  {/* Tooltip context */}
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-1.5">
-                      <span className="size-2 rounded-full bg-blue-500 animate-pulse" /> {/* Маленька крапка-індикатор */}
+                      <span className="size-2 rounded-full bg-blue-500 animate-pulse" /> 
                       <span className="text-xs text-gray-500 font-medium">Показник:</span>
                     </div>
                     <span className="text-sm font-bold text-slate-800">

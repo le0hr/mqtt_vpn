@@ -15,18 +15,18 @@ export function DonatePage() {
   const impactItems = [
     {
       icon: CircleDollarSign,
-      amount: '$25',
-      description: t('donatePage.impactItems.25'),
+      amount: '$5',
+      description: t('donatePage.impactItems.5'),
     },
     {
       icon: Shield,
-      amount: '$100',
-      description: t('donatePage.impactItems.100'),
+      amount: '$10',
+      description: t('donatePage.impactItems.10'),
     },
     {
       icon: TrendingUp,
-      amount: '$250',
-      description: t('donatePage.impactItems.250'),
+      amount: '$20',
+      description: t('donatePage.impactItems.20'),
     },
   ];
 

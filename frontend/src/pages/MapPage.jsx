@@ -107,8 +107,6 @@ export function MapPage() {
                 ))}
               </SelectContent>
             </Select>
-            <Button
-            variant="outline">S</Button>
        {/*raw search bar implementation  */}
 {/*             
             <form onSubmit={handleSearch} className="flex items-center gap-2 flex-1 min-w-[240px] md:min-w-[340px]">
@@ -222,7 +220,7 @@ export function MapPage() {
               </div>
               <div>
                 <span className="text-gray-600">{t('mapPage.coverage_area')} </span>
-                <span className="font-medium">468 km²</span>
+                <span className="font-medium">72 km²</span>
               </div>
             </div>
           </div>

@@ -42,27 +42,27 @@
     "low": "Low"
   },
   "aboutPage": {
-    "heroTitle": "About Air Quality Monitor",
-    "heroDescription": "Dedicated to providing real-time, accurate air quality data to protect public health",
+    "heroTitle": "Air Quality Monitor",
+    "heroDescription": "An open service which provides air quality data in Cherkasy city to protect public health",
     "stats": {
       "activeMonitors": "Active Monitors",
-      "dataPoints": "Data Points/Day",
-      "yearsOperating": "Years Operating",
+      "dataPoints": "Data Points",
+      "yearsOperating": "Volunteers registered",
       "accuracyRate": "Accuracy Rate"
     },
     "missionTitle": "Our Mission",
-    "missionText1": "We believe everyone deserves to breathe clean air. Our mission is to provide accessible, real-time air quality data to communities across New York City, empowering residents to make informed decisions about their health and environment.",
-    "missionText2": "Through our network of advanced monitoring stations, we track multiple pollutants including particulate matter, nitrogen oxides, carbon monoxide, and ozone levels, providing comprehensive insights into the air quality across all five boroughs.",
+    "missionText1": "We believe everyone deserves to breathe clean air. This project was created to rise social awareness about ecology of our city. Our goal is to provide an open data about air quality and empower residents to make informed decisions about their health and environment.",
+    "missionText2": "Through our network of advanced monitoring stations, we track multiple pollutants including nitrogen oxides, carbon monoxide, and organic compounds vapors, providing comprehensive insights into the air quality across the city.",
     "technologyTitle": "Our Technology",
-    "technologyText1": "We deploy state-of-the-art sensors and monitoring equipment that measure air pollutants with precision and accuracy. Our technology captures data every minute, ensuring you have access to the most current information about air quality in your area.",
+    "technologyText1": "We develop modern sensors, mobile and affordable monitoring sensors that measure air pollutants. This is becoming possible thanks to the volunteers, riders and others, who ensuring you have access to the most current information about air quality in your area.",
     "technologyText2": "All data is processed through advanced algorithms and validated by environmental scientists to ensure reliability. Our commitment to accuracy and transparency makes us a trusted source for air quality information.",
     "teamTitle": "Our Team",
-    "teamText1": "Our team consists of environmental scientists, data engineers, public health experts, and community advocates who are passionate about environmental justice and public health.",
-    "teamText2": "Together, we work to ensure that every New Yorker has access to the information they need to protect themselves and their families from air pollution."
+    "teamText1": "Air Quality Monitor is a new project, and the team only consist of the project's founder, Lev.",
+    "teamText2": "That because, we are looking for active and ambitious developers, who are willing to became a part of our mission."
   },
   "donatePage": {
     "title": "Support Our Mission",
-    "subtitle": "Your donation helps us maintain and expand our air quality monitoring network",
+    "subtitle": "Your donation motivates us to support and to expand our monitoring network",
     "selectAmount": "Select Amount",
     "customAmount": "Custom Amount",
     "donate": "Donate Now",
@@ -75,9 +75,9 @@
       "recognition": "Recognition in our annual donor report"
     },
     "impactItems": {
-      "25": "Covers maintenance for one monitoring station for a month",
-      "100": "Provides sensor calibration and quality assurance testing",
-      "250": "Funds data analysis and public reporting for one quarter"
+      "5": "Covers maintenance of the network for a month",
+      "10": "Covers standard sensor building cost ",
+      "20": "Covers enhanced sensor building cost (more details soon)"
     },
     "makeDonation": "Make a Donation",
     "donorBenefits": "Donor Benefits",
@@ -89,7 +89,7 @@
   },
   "joinPage": {
     "title": "Join Our Community",
-    "subtitle": "Become part of the movement for cleaner air and healthier communities",
+    "subtitle": "Become part of the movement for cleaner air and healthier future",
     "form": {
       "name": "Full Name",
       "email": "Email Address",
@@ -104,32 +104,32 @@
       },
       "healthAdvocacy": {
         "title": "Health Advocacy",
-        "description": "Contribute to public health initiatives and environmental justice"
+        "description": "Contribute to environmental justice"
       },
       "skillDevelopment": {
         "title": "Skill Development",
-        "description": "Learn about environmental science and data collection technologies"
+        "description": "Learn about environmental science, technologies of SW engineering, data collection and analyzing"
       }
     },
-    "whyVolunteer": "Why Volunteer With Us?",
+    "whyVolunteer": "Why You Should Join Us?",
     "volunteerOpportunities": "Volunteer Opportunities",
     "getInvolved": "Get Involved Today",
     "opportunities": {
       "monitorMaintenance": {
-        "title": "Monitor Maintenance",
-        "description": "Help maintain and calibrate air quality monitoring equipment"
+        "title": "Service development",
+        "description": "Take a part in real project developing"
       },
       "dataAnalysis": {
         "title": "Data Analysis",
-        "description": "Assist in analyzing air quality data and generating reports"
+        "description": "Assist in analyzing air quality data and creating reports"
       },
       "communityOutreach": {
         "title": "Community Outreach",
-        "description": "Help educate the community about air quality and its impacts"
+        "description": "Help spreading community awareness about air quality and it's impacts"
       },
       "eventCoordination": {
-        "title": "Event Coordination",
-        "description": "Organize awareness events and community workshops"
+        "title": "Managing",
+        "description": "Develop your organizing skills, helping the ecology"
       }
     }
   },
