@@ -7,7 +7,7 @@
 class Gps{
 public:
     TinyGPSPlus GPS;
-    SoftwareSerial* busConnection;
+    SoftwareSerial* bus;          // reference to hardware serial port
     uint32_t GPSBaud;
     int RXPin, TXPin, start;
     String data;

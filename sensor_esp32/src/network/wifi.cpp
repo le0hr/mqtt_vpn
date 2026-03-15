@@ -11,7 +11,6 @@ void Wifi::setupConnection(const char* ssid, const char* password){
         attempts++;
 
     }
-    WiFi.setSleep(WIFI_PS_MIN_MODEM);
     
     if (WiFi.status() == WL_CONNECTED){
         Serial.println("Wifi: Connected successfully");
@@ -26,6 +25,7 @@ void Wifi::setupConnection(const char* ssid, const char* password){
         Serial.println("Time: synchronized");
     }
     else{
+        WiFi.disconnect(true);
         Serial.println("Wifi: Failed to connect");
 
     }

@@ -41,6 +41,9 @@ void Data::setData(double* lat, double* lng, float* co, float* alcohol , float* 
     _measurements.acetone = *acetone;
     _measurements.time = *logTime;
     Serial.println("Storage: Data have been set ");
+    
+
+    
 
 }
 
@@ -79,15 +82,8 @@ void Data::startRead(){
 int Data::readData(char* payload){
     if (!_f || !_f.available()) return 0;
     
-    // if file exists or not empty, read from file
-    if (!_f.size()){
-        _f = LittleFS.open("/log.bin", "r");
-        _f.read((uint8_t*)&_measurements, sizeof(_measurements));
-    }
+    _f.read((uint8_t*)&_measurements, sizeof(_measurements));
     
-    if (!_f) {
-        Serial.println("Storage: ERROR - Failed to open file for reading!");
-    }
 
     JsonDocument doc;
     doc["lat"] = _measurements.lat;
@@ -105,6 +101,7 @@ int Data::readData(char* payload){
     serializeJson(doc, buffer);
     strcpy(payload, buffer);
     Serial.printf("Storage: chunk was read");
+    Serial.printf("Storage: available: %d\n", _f.available());
 
     return _f.available();
 

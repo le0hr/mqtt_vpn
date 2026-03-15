@@ -15,7 +15,7 @@ The barrier to entry is extremely low. The entire sensor node costs around **$5 
 
 | Component | Purpose |
 | :--- | :--- |
-| **ESP8266** | The brain of the device. Reads data and transmits it via Wi-Fi/Hotspot. |
+| **ESP32** | The brain of the device. Reads data and transmits it via Wi-Fi/Hotspot. |
 | **MQ-135** | A cheap but effective gas sensor that detects CO2, Ammonia, Benzene, and smoke. |
 | **GP-02-Kit GPS** | Tracks the exact latitude and longitude of the air sample. |
 | **Power Bank** | Any standard USB power bank keeps the device running during a ride. |
@@ -33,7 +33,7 @@ The system is designed to be lightweight and fast, ensuring that a cyclist's exa
 
 We need your help to cover the whole city! You don't need to be a programmer to contribute.
 
-* **For Cyclists:** Build a sensor (or request one from us) and follow instructions bellow. Then attach it to your handlebars, and just ride your usual routes!
+* **For Cyclists:** Build a sensor (or request one from us) and follow instructions bellow. Then attach it to your seat post, and just ride your usual routes!
 * **For Developers:** * Clone this repository: `git clone https://github.com/le0hr/ecomonitor.git`
   * Help us improve the backend MQTT handler or optimize the database queries.
   * Enhance the frontend map UI (Leaflet/Mapbox) to show historical heatmaps.
@@ -41,7 +41,7 @@ We need your help to cover the whole city! You don't need to be a programmer to 
 
 ## ⚙️ How to flesh controler
 
-*Instructions on how to run the backend and frontend locally will be added here soon.*
+<!-- *Instructions on how to run the backend and frontend locally will be added here soon.* -->
 1. **Preparation** Install the PlatformIO extention for your VSCODE and open sensor folder using PlatformIO
 2. **Configuring** Update sensor/include/config.h.
 3. **Flashing** Attach controler via USB and flash it.
