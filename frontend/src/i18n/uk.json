@@ -81,10 +81,10 @@
     "makeDonation": "Зробити внесок",
     "donorBenefits": "Переваги для партнерів",
     "howWeUse": "Як ми використовуємо ваші внески",
-    "equipmentMaintenance": "Обладнання та сервіс",
-    "researchAnalysis": "Дослідження та аналіз",
-    "communityPrograms": "Соціальні програми",
-    "operations": "Операційна діяльність"
+    "equipmentMaintenance": "Обладнання ",
+    "researchAnalysis": "Інфраструктура",
+    "communityPrograms": "Розробка",
+    "operations": "Реклама"
   },
   "joinPage": {
     "title": "Приєднуйтеся до спільноти",
@@ -130,6 +130,13 @@
         "title": "Менеджмент",
         "description": "Розвивайте управлінські навички, допомагаючи екології"
       }
+    },
+    "social": {
+      "title": "Будь на зв'язку",
+      "description": "Слідкуйте за нами у соцмережах",
+      "gmail": "Gmail",
+      "instagram": "Instagram",
+      "github": "GitHub"
     }
   },
   "notFoundPage": {

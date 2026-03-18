@@ -1,5 +1,5 @@
 import { Card } from '../components/ui/card';
-import { Target, Users, Award, TrendingUp } from 'lucide-react';
+import { Target, Users, Award, Github, Mail, Instagram } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export function AboutPage() {
@@ -75,7 +75,7 @@ export function AboutPage() {
         </div>
 
         {/* Team Section */}
-        <Card className="p-6 md:p-8">
+        <Card className="p-6 md:p-8 mb-8 md:mb-12">
           <h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">{t('aboutPage.teamTitle')}</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
             {t('aboutPage.teamText1')}
@@ -84,7 +84,37 @@ export function AboutPage() {
             {t('aboutPage.teamText2')}
           </p>
         </Card>
+         {/* Social Media Card */}
+        <Card className="p-6 md:p-8 mb-8">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+            <div className="max-w-md">
+              <h2 className="text-xl md:text-2xl font-bold mb-2">{t('joinPage.social.title')}</h2>
+              <p className="text-gray-600">{t('joinPage.social.description')}</p>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full lg:w-auto">
+              {[
+                { Icon: Mail, label: t('joinPage.social.gmail'), href: "mailto:lev.hrabovij@email.com" },
+                { Icon: Instagram, label: t('joinPage.social.instagram'), href: "https://www.instagram.com/1evhr/" },
+                { Icon: Github, label: t('joinPage.social.github'), href: "https://github.com/le0hr" },
+              ].map(({ Icon, label, href }) => (
+                <a 
+                  key={label}
+                  href={href} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="flex items-center justify-center gap-3 rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:border-blue-200 hover:text-blue-700 transition-all duration-200 shadow-sm hover:shadow-md active:scale-95"
+                >
+                  <Icon className="size-5 shrink-0" /> 
+                  <span className="whitespace-nowrap">{label}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </Card>
       </div>
     </div>
   );
+
+
 }

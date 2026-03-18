@@ -9,8 +9,9 @@ export function DonatePage() {
   const { t } = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [customAmount, setCustomAmount] = useState('');
-
-  const donationAmounts = [25, 50, 100, 250, 500];
+  const [donationType, setDonationType] = useState('one-time')
+  
+  const donationAmounts = [1, 2, 5, 10, 20];
 
   const impactItems = [
     {
@@ -38,10 +39,8 @@ export function DonatePage() {
   ];
 
   const handleDonate = () => {
-    const amount = selectedAmount || parseFloat(customAmount);
-    if (amount) {
-      alert(`Thank you for your generous donation of $${amount}! This is a demo, so no actual payment will be processed.`);
-    }
+    const amount = customAmount || selectedAmount
+    alert(`Site still in demo, no actual payment will be processed.`);
   };
 
   return (
@@ -97,6 +96,7 @@ export function DonatePage() {
                   <Button
                     key={amount}
                     type="button"
+                    className={selectedAmount === amount ? "bg-blue-600 hover:bg-blue-700 text-white" : ""}
                     variant={selectedAmount === amount ? 'default' : 'outline'}
                     onClick={() => {
                       setSelectedAmount(amount);
@@ -133,20 +133,27 @@ export function DonatePage() {
             </div>
 
             {/* Donation Type */}
-            <div className="mb-6">
-              <label className="block text-sm font-medium mb-3">Donation Type</label>
-              <div className="grid grid-cols-2 gap-2 md:gap-3">
-                <Button type="button" variant="outline">
-                  One-Time
-                </Button>
-                <Button type="button" variant="outline">
-                  Monthly
-                </Button>
-              </div>
+            <div className="grid grid-cols-2 gap-2 md:gap-3">
+              <Button 
+                type="button" 
+                variant={donationType === 'one-time' ? 'default' : 'outline'}
+                className={donationType === 'one-time' ? "bg-blue-600 hover:bg-blue-700 text-white" : ""}
+                onClick={() => setDonationType('one-time')}
+              >
+                One-Time
+              </Button>
+              <Button 
+                type="button" 
+                variant={donationType === 'monthly' ? 'default' : 'outline'}
+                className={donationType === 'monthly' ? "bg-blue-600 hover:bg-blue-700 text-white" : ""}
+                onClick={() => setDonationType('monthly')}
+              >
+                Monthly
+              </Button>
             </div>
 
             <Button 
-              className="w-full" 
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow-md transition-all" 
               size="lg"
               onClick={handleDonate}
               disabled={!selectedAmount && !customAmount}
@@ -180,37 +187,37 @@ export function DonatePage() {
                 <div>
                   <div className="flex justify-between mb-2">
                     <span className="text-sm font-medium">{t('donatePage.equipmentMaintenance')}</span>
-                    <span className="text-sm font-medium">45%</span>
+                    <span className="text-sm font-medium">60%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-blue-600 h-2 rounded-full" style={{ width: '45%' }} />
+                    <div className="bg-blue-600 h-2 rounded-full" style={{ width: '60%' }} />
                   </div>
                 </div>
                 <div>
                   <div className="flex justify-between mb-2">
                     <span className="text-sm font-medium">{t('donatePage.researchAnalysis')}</span>
-                    <span className="text-sm font-medium">30%</span>
+                    <span className="text-sm font-medium">20%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-green-600 h-2 rounded-full" style={{ width: '30%' }} />
+                    <div className="bg-green-600 h-2 rounded-full" style={{ width: '20%' }} />
                   </div>
                 </div>
                 <div>
                   <div className="flex justify-between mb-2">
                     <span className="text-sm font-medium">{t('donatePage.communityPrograms')}</span>
-                    <span className="text-sm font-medium">15%</span>
+                    <span className="text-sm font-medium">9%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-purple-600 h-2 rounded-full" style={{ width: '15%' }} />
+                    <div className="bg-purple-600 h-2 rounded-full" style={{ width: '9%' }} />
                   </div>
                 </div>
                 <div>
                   <div className="flex justify-between mb-2">
                     <span className="text-sm font-medium">{t('donatePage.operations')}</span>
-                    <span className="text-sm font-medium">10%</span>
+                    <span className="text-sm font-medium">1%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-orange-600 h-2 rounded-full" style={{ width: '10%' }} />
+                    <div className="bg-orange-600 h-2 rounded-full" style={{ width: '1%' }} />
                   </div>
                 </div>
               </div>

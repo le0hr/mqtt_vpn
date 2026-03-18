@@ -119,7 +119,6 @@ const handleSubmit = async (e) => {
             </div>
           </div>
         </Card>
-
         {/* Sign Up Form */}
         <Card className="p-6 md:p-8">
           <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">{t('joinPage.getInvolved')}</h2>

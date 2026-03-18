@@ -82,10 +82,10 @@
     "makeDonation": "Make a Donation",
     "donorBenefits": "Donor Benefits",
     "howWeUse": "How We Use Your Donation",
-    "equipmentMaintenance": "Equipment & Maintenance",
-    "researchAnalysis": "Research & Analysis",
-    "communityPrograms": "Community Programs",
-    "operations": "Operations"
+    "equipmentMaintenance": "Equipment",
+    "researchAnalysis": "Maintenance",
+    "communityPrograms": "Research",
+    "operations": "Advertising"
   },
   "joinPage": {
     "title": "Join Our Community",
@@ -131,6 +131,13 @@
         "title": "Management",
         "description": "Develop your organizational skills while helping the environment"
       }
+    },
+    "social": {
+      "title": "Stay Connected",
+      "description": "Follow us on social media",
+      "gmail": "Gmail",
+      "instagram": "Instagram",
+      "github": "GitHub"
     }
   },
   "notFoundPage": {
