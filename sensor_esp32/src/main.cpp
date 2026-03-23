@@ -125,8 +125,8 @@ void networkTask(void* pvParameters) {
             lat = gpsData.lat;
             lng = gpsData.lng;
             gpsValid = gpsData.valid;
-            Serial.println(lat);
-            Serial.println(lng);
+            Serial.println(lat, 7);
+            Serial.println(lng, 7);
             xSemaphoreGive(gpsMutex);
         }
 
@@ -165,23 +165,22 @@ void networkTask(void* pvParameters) {
             }
 
             if (WiFi.status() == WL_CONNECTED && mqtt->mqttClient.connected()) {
-                storage->startRead();
-
-                int bytesRead = storage->readData(message);
-                while (bytesRead > 0 &&
-                       WiFi.status() == WL_CONNECTED &&
-                       mqtt->mqttClient.connected()) {
-
+                storage->startRead();\
+                int bytesRead;
+                do{
+                    bytesRead = storage->readData(message);
                     mqtt->sendMessage(DEVICE_NAME, message);
                     bytesRead = storage->readData(message);
-                }
+                }while (bytesRead > 0 &&
+                    WiFi.status() == WL_CONNECTED &&
+                    mqtt->mqttClient.connected()); 
 
                 storage->endRead();
 
-                prvLat = lat;
-                prvLng = lng;
             } else {
                 Serial.println("Network: no WiFi/MQTT, data saved locally");
+                prvLat = lat;
+                prvLng = lng;
             }
         } else {
             Serial.println("GPS: Too close to last sent point");
@@ -197,7 +196,7 @@ void networkTask(void* pvParameters) {
 // =====================================================
 void setup() {
     Serial.begin(115200);
-    delay(500);
+    delay(5000);
     Serial.println("Setup: Booting...");
 
     wifi = new Wifi;

@@ -18,18 +18,17 @@ spiSettings(ADC_CLK, MSBFIRST, SPI_MODE0){
 }
 
 void AirSensor::readData(float* co, float* alcohol , float* co2, float* toluene, float* nh3, float* acetone){
-    *co =0;
-    *alcohol=0;
-    *co2=0;
-    *toluene=0;
-    *nh3=0;
-    *acetone=0;
+    *co =1000000000000000;
+    *alcohol=1000000000000000;
+    *co2=1000000000000000;
+    *toluene=1000000000000000;
+    *nh3=1000000000000000;
+    *acetone=1000000000000000;
     
     for (int i = 0; i<50;i++){
         SPI.beginTransaction(spiSettings);
         uint16_t raw = adc.read(MCP3208::Channel::SINGLE_0);
         SPI.endTransaction();
-        
         MQ3->externalADCUpdate(raw);
         
         MQ3->update();
@@ -53,6 +52,7 @@ void AirSensor::readData(float* co, float* alcohol , float* co2, float* toluene,
         *acetone = min(MQ3->readSensor(false, 0), *acetone);
     }
     Serial.println("AirSensor: data was read");
+    Serial.println(*alcohol);
 
 
 
