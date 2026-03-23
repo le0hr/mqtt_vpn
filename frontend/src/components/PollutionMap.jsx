@@ -85,26 +85,28 @@ export function PollutionMap({ points = [], selected = 'co2', center = [49.444, 
               key={point.id}
               position={[point.lat, point.lng]}               icon={createPoint(color,point[selected] )}
             >
+{/* TODO: Make a normal tooltip */}
+
               {/*Tooltip window */}
-              <Tooltip direction="top" offset={[0, -10]} opacity={1} className="custom-leaflet-tooltip">
-                <div className="bg-white px-3 py-2 rounded-lg shadow-xl border border-gray-100 min-w-[120px]">
+              {/* <Tooltip direction="top" offset={[0, -10]} opacity={1} className="custom-leaflet-tooltip"> */}
+                {/* <div className="bg-white px-3 py-2 rounded-lg shadow-xl border border-gray-100 min-w-[120px]"> */}
                   {/* Location header */}
-                  <div className="text-[13px] font-bold text-gray-900 border-b border-gray-50 pb-1 mb-1 truncate">
-                    {point.location}
-                  </div>
+                  {/* <div className="text-[13px] font-bold text-gray-900 border-b border-gray-50 pb-1 mb-1 truncate"> */}
+                    {/* {point.location} */}
+                  {/* </div> */}
                   
                   {/* Tooltip context */}
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-1.5">
-                      <span className="size-2 rounded-full bg-blue-500 animate-pulse" /> 
-                      <span className="text-xs text-gray-500 font-medium">Показник:</span>
-                    </div>
-                    <span className="text-sm font-bold text-slate-800">
-                      {point.value} <span className="text-[10px] text-gray-400 font-normal">мг/м³</span>
-                    </span>
-                  </div>
-                </div>
-              </Tooltip>
+                  {/* <div className="flex items-center justify-between gap-3"> */}
+                    {/* <div className="flex items-center gap-1.5"> */}
+                      {/* <span className="size-2 rounded-full bg-blue-500 animate-pulse" />  */}
+                      {/* <span className="text-xs text-gray-500 font-medium">Показник:</span> */}
+                    {/* </div> */}
+                    {/* <span className="text-sm font-bold text-slate-800"> */}
+                      {/* {point.value} <span className="text-[10px] text-gray-400 font-normal">мг/м³</span> */}
+                    {/* </span> */}
+                  {/* </div> */}
+                {/* </div> */}
+              {/* </Tooltip> */}
             </Marker>
           );
         })}

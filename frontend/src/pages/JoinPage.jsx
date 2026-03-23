@@ -36,7 +36,7 @@ const handleSubmit = async (e) => {
     console.log(formData)
     const response = await axios.post('/api/join', formData);
     console.log("Success:", response.data);
-    alert(t('joinPage.form.successMessage') || "Дякуємо за заявку!");
+    // alert(t('joinPage.form.successMessage') || "Дякуємо за заявку!");
     
 
     setFormData({ name: '', email: '', phone_number: '', message: '' });
