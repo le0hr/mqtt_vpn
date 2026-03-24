@@ -3,7 +3,7 @@ from .connection import engine
 from .models import sensor_readings, applicants
 import json
 def upsert_sensor_readings(data):
-    point = func.ST_GeogFromText(f"POINT({data['lng']} {data['lat']})")
+    point = data['geom']
 
     find_stmt = (
         select(sensor_readings.c.id)
