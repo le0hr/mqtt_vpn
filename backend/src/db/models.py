@@ -1,9 +1,9 @@
 from sqlalchemy import MetaData, Table, Row, Column, Integer, String, TIMESTAMP, Float
-
+from geoalchemy2 import Geography
 
 metadata_obj = MetaData()
 
-sensor_reading =  Table(
+sensor_readings =  Table(
     "sensor_readings",
     metadata_obj,
     Column("id", Integer, primary_key=True),
@@ -16,6 +16,7 @@ sensor_reading =  Table(
     Column("acetone",Integer ),
     Column("lat",Float ),
     Column("lng",Float ),
+    Column("geom", Geography(geometry_type="POINT", srid=4326)),
 )
 
 applicants = Table(

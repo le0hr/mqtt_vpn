@@ -2,8 +2,8 @@ import json
 from datetime import datetime
 import logging
 from ..aqi import get_final_aqi
-from db import insert_sensor_reading
-
+from db import upsert_sensor_reading
+from sqlalchemy import func
 
 def process_mqtt_payload(payload_str: str):
     data = json.loads(payload_str)
@@ -20,7 +20,8 @@ def process_mqtt_payload(payload_str: str):
         "acetone": data["acetone"],
         "lat": data.get("lat"),
         "lng": data.get("lng"),
+        "geom": func.ST_GeogFromText(f"POINT({data['lng']} {data['lat']})")
     }
 
-    insert_sensor_reading(record)
+    upsert_sensor_reading(record)
     logging.info("Inserted reading with time %s", record["time"])
