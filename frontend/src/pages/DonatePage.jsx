@@ -9,7 +9,6 @@ export function DonatePage() {
   const { t } = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [customAmount, setCustomAmount] = useState('');
-  const [donationType, setDonationType] = useState('one-time')
   
   const donationAmounts = [1, 2, 5, 10, 20];
 
@@ -40,7 +39,9 @@ export function DonatePage() {
 
   const handleDonate = () => {
     const amount = customAmount || selectedAmount
-    alert(`Site still in demo, no actual payment will be processed.`);
+    const url = `https://send.monobank.ua/jar/4WsWXP3YF6?amount=${amount * 100}`;
+
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -132,25 +133,7 @@ export function DonatePage() {
               </div>
             </div>
 
-            {/* Donation Type */}
-            <div className="grid grid-cols-2 gap-2 md:gap-3">
-              <Button 
-                type="button" 
-                variant={donationType === 'one-time' ? 'default' : 'outline'}
-                className={donationType === 'one-time' ? "bg-blue-600 hover:bg-blue-700 text-white" : ""}
-                onClick={() => setDonationType('one-time')}
-              >
-                One-Time
-              </Button>
-              <Button 
-                type="button" 
-                variant={donationType === 'monthly' ? 'default' : 'outline'}
-                className={donationType === 'monthly' ? "bg-blue-600 hover:bg-blue-700 text-white" : ""}
-                onClick={() => setDonationType('monthly')}
-              >
-                Monthly
-              </Button>
-            </div>
+            
 
             <Button 
               className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow-md transition-all" 
@@ -163,7 +146,7 @@ export function DonatePage() {
             </Button>
 
             <p className="text-xs text-gray-500 text-center mt-4">
-              Secure payment powered by industry-leading encryption
+              Secure payment powered by monobank
             </p>
           </Card>
 
