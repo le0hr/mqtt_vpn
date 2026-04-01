@@ -87,7 +87,7 @@ export function PollutionMap({ points = [], selected = 'co2', center = [49.444, 
               pathOptions={{
                 color: '#ffffff',     // border
                 weight: 3,
-                fillColor: getColor(color),
+                fillColor: color,
                 fillOpacity: 1,
               }}
               eventHandlers={{
